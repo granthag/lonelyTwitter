@@ -1,3 +1,15 @@
+/* Tweet
+ *
+ * Version 1.0
+ *
+ * Feb 01, 2018
+ *
+ *  Copyright © 2016 Team X, CMPUT301, University of Alberta - All Rights Reserved.
+ *  You may use, distribute or modify this code under terms and conditions of Code of Student Behavior at
+ * University of Alberta
+ * You can find a copy of the license in this project. Otherwise, please contact contact@abc.ca
+ */
+
 package ca.ualberta.cs.lonelytwitter;
 
 import java.io.BufferedReader;
@@ -26,6 +38,14 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * @author dezfuli
+ *
+ * @version 1.0
+ * @see NormalTweet
+ * @see Tweet
+ */
+
 public class LonelyTwitterActivity extends Activity {
 
 	private static final String FILENAME = "tweet_list.sav";
@@ -37,7 +57,15 @@ public class LonelyTwitterActivity extends Activity {
 
 
 
-	/** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created
+     *
+     * @param savedInstanceState saved tweets from last time app was opened
+	 *
+	 * @see NormalTweet
+	 * @see Tweet
+     */
+    
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,6 +80,14 @@ public class LonelyTwitterActivity extends Activity {
 
 
 		saveButton.setOnClickListener(new View.OnClickListener() {
+
+			/**
+			 * Saves tweet when save button is pressed
+			 *
+			 * @param v The screen of the phone
+			 * @see NormalTweet
+			 * @see Tweet
+			 */
 
 			public void onClick(View v) {
 				setResult(RESULT_OK);
@@ -70,13 +106,25 @@ public class LonelyTwitterActivity extends Activity {
 		});
 		clearButton.setOnClickListener(new View.OnClickListener() {
 
+			/**
+			 * Saves tweet when clear button is pressed
+			 *
+			 * @param v The screen of the phone
+			 */
+
 			public void onClick(View v) {
 				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
 				tweetlist.clear();
 				adapter.notifyDataSetChanged();
+			}
+		});
+	}
 
-	}});}
+	/**
+	 * Called when app starts, after onCreate, and puts old tweets from file in the list layout
+	 *
+	 */
 
 	@Override
 	protected void onStart() {
@@ -92,6 +140,12 @@ public class LonelyTwitterActivity extends Activity {
 
 
 	}
+
+	/**
+	 * Loads old tweets from file and turns them into an arrayList
+	 *
+	 * @see Gson
+	 */
 
 	private void loadFromFile() {
 
@@ -115,7 +169,13 @@ public class LonelyTwitterActivity extends Activity {
 		}
 
 	}
-	
+
+	/**
+	 * Saves tweet to file
+	 *
+	 * @see Gson
+	 */
+
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
@@ -132,6 +192,7 @@ public class LonelyTwitterActivity extends Activity {
 			throw new RuntimeException();
 		}
 	}
+
 
 	@Override
 	protected void onDestroy() {

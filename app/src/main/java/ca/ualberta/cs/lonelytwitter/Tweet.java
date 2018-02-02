@@ -6,9 +6,25 @@ import java.util.Date;
  * Created by dezfuli on 1/16/18.
  */
 
+/** Represents a tweet
+ *
+ * @author dezfuli
+ *
+ * @version 1.0
+ *
+ * @see ImportantTweet
+ * @see NormalTweet
+ */
+
 public abstract class Tweet implements Tweetable {
     private String message;
     private Date date;
+
+    /**
+     * Constructs a tweet instance using the given message
+     *
+     * @param message the message of the tweet
+     */
 
     Tweet(String message){
 
@@ -17,14 +33,27 @@ public abstract class Tweet implements Tweetable {
 //        message = message;
     }
 
+
+
     Tweet(String message, Date date){
         this.message = message;
         this.date = date;
     }
 
+
     public String getMessage(){
         return message;
     }
+
+    /**
+     * Sets the message of the tweet
+     *
+     * @param message the new message of the tweet
+     * @throws TweetTooLongException is thrown when the message is over 140 characters
+     *
+     * @see ImportantTweet
+     * @see NormalTweet
+     */
 
     public void setMessage(String message) throws TweetTooLongException{
         if (message.length() < 140){
