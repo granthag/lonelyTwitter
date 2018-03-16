@@ -27,7 +27,8 @@ import com.google.gson.reflect.TypeToken;
 
 public class LonelyTwitterActivity extends Activity {
 
-	private LonelyTwitterActivity activity = this;
+	//private LonelyTwitterActivity activity = this;
+	//Disabled since it's not used
 
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;

@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 android {
-    compileSdkVersion 18
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 27 //changed to match targetSdk
+    buildToolsVersion '26.0.2' //changed to a newer version since the other once was being ignored
 
     defaultConfig {
         applicationId "ca.ualberta.cs.lonelytwitter"
         minSdkVersion 18
-        targetSdkVersion 18
+        targetSdkVersion 27 //changed targetSdk to target the latest Android versions
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_5
             targetCompatibility JavaVersion.VERSION_1_5
@@ -23,6 +23,6 @@ android {
 
 dependencies {
 
-    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.google.code.gson:gson:2.8.1' //changed to newest version of gson
     compile 'com.jayway.android.robotium:robotium-solo:5.6.3'
 }
